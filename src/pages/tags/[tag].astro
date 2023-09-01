@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPost from '../../components/BlogPost.astro';
+import Search from '../../components/Search';
+import Advert from '../../components/Advert.astro';
+
+const postMap = (await Astro.glob("../posts/*.md")).map(post => ({name: post.frontmatter.title, path: post.url, tag: post.frontmatter.tags[0] }));
+
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob('../posts/*.md');
+
+  const uniqueTags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+posts.sort((a, b) => Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate));
+
+const taged = posts.length
+
+
+
+---
+<BaseLayout pageTitle={`${tag} | Posts`.toUpperCase()}>
+
+  <Advert />
+
+  
+  <Search client:load posts={postMap} />
+
+
+
+  <p class="text-gray-200 mt-8 text-xs">Tag:<span class="capitalize"> {tag}</span> ({taged})</p>
+  <ul>
+    {posts.map((post) => <BlogPost url={post.url} title={post.frontmatter.title} tag={post.frontmatter.tags[0]} date={post.frontmatter.pubDate}/>)}
+  </ul>
+</BaseLayout>

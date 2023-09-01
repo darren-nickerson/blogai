@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqWidget from "../components/FaqWidget.jsx";
+const pageTitle = "Frequently Asked Questions - BlogAI.io"
+
+;
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  description="Explore BlogAI.io's Comprehensive FAQ - Your Questions, Answered. At BlogAI.io, we believe in clarity and transparency. Browse through our detailed Frequently Asked Questions section to find answers to your queries about AI-generated blog posts, our ChatGPT Blog Prompt Generator, pricing, and more. Get the information you need to make informed decisions and embark on your content creation journey with confidence. Discover how BlogAI.io is simplifying AI-driven content for bloggers, marketers, and businesses."
+  title="FAQ"
+>
+  <FaqWidget client:load />
+</BaseLayout>

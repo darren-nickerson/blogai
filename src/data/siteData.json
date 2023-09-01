@@ -1,0 +1,8 @@
+{
+  "title": "BlogAI",
+  "description": "Ai powered blog and post generator",
+  "image": {
+    "src": "/assets/image-default.png",
+    "alt": "BlogAi"
+  }
+}

@@ -1,0 +1,56 @@
+---
+import "../styles/global-styles.css";
+import Header from "../components/Header.astro";
+const { pageTitle } = Astro.props;
+import Seo from "../components/Seo.astro";
+import Footer from "../components/Footer.astro";
+import ActiveClass from "../components/ActiveClass.astro";
+import SmallFooter from "../components/SmallFooter.astro";
+
+const { title, description, image, frontmatter, robots } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="author" content="Darren Nickerson" />
+
+    <Seo
+      title={title}
+      description={description}
+      url={Astro.url}
+      {image}
+      {frontmatter}
+      {robots}
+    />
+
+    <ActiveClass />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body class="bg-gray-900 mb-[100px] max-w-[900px] rounded-xl m-auto mt-4 p-4">
+    <header>
+      <nav>
+        <Header />
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <Footer />
+      <SmallFooter />
+    </footer>
+    <style>
+      * {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      }
+    </style>
+  </body>
+</html>

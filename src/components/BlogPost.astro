@@ -1,0 +1,20 @@
+---
+import moment from "moment";
+const { title, url, date, tag } = Astro.props;
+const formattedDate = moment(date).utc().format("Do MMM YYYY");
+
+const image = `assets/${tag}-light.svg`;
+---
+
+<article class="list-item group">
+  <a href={url} class="flex flex-col md:flex-row justify-between border-b border-gray-400 py-4">
+    <div class="flex items-center">
+      <img class="h-14 w-14" src={image} alt={`${tag} icon`} />
+      <h2 class="lg:text-base text-white">{title}</h2>
+    </div>
+    <time datetime={date} class="self-start md:self-center pl-4 md:pl-0 md:w-[200px] text-gray-400 font-normal text-sm md:text-base group-hover:text-gray-100 transition-colors ml-10 md:ml-0 text-right">
+      {formattedDate}
+    </time>
+  </a>
+</article>
+

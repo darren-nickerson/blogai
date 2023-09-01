@@ -1,0 +1,67 @@
+---
+import "../styles/copybutton.css";
+import Copy from "../components/Copy.astro";
+import Utterances from "../components/Utterances.astro";
+import BaseLayout from "./BaseLayout.astro";
+import moment from "moment";
+import Advert from "../components/Advert.astro";
+const { frontmatter } = Astro.props;
+const formattedDate = moment(frontmatter.pubDate).utc().format("Do MMM YYYY");
+---
+
+<BaseLayout
+  pageTitle={frontmatter.title}
+  title={frontmatter.title}
+  image={frontmatter.image}
+  description={frontmatter.description}
+  robots={frontmatter.robots}
+  {...frontmatter}
+>
+
+  <article
+    class="prose md:prose-lg prose-invert mt-10 m-auto max-w-[900px] pb-1 md:border-[1px] md:border-gray-800 rounded-lg p-2 md:shadow-2xl md:p-12"
+  >
+    <header>
+
+      <div class="flex flex-col gap-4">
+      <a href={`/tags/${frontmatter.tags[0]}`} class="flex items-center w-[60px] h-[60px] mb-4">
+        <img
+          class="bg-gray-950 rounded  border-gray-800 border-[2px]"
+          src={`/assets/${frontmatter.tags[0]}-light.svg`}
+          alt={`${frontmatter.tags[0]} icon`}
+        />
+      </a>
+
+      
+
+      
+        <h1 class="text-left prose-lead:leading-loose">{frontmatter.title}</h1>
+      </div>
+      <div class="flex flex-col text-sm">
+        <time class="text-xl font-bold text-gray-300 tracking-wide">
+          {formattedDate}
+        </time>
+        <div class="flex flex-row">
+          Tag:
+          <a
+            class="text-[#C8BF70] lowercase selection:underline ml-2"
+            href={`/tags/${frontmatter.tags[0]}`}
+          >
+            {frontmatter.tags[0]}
+          </a>
+        </div>
+        
+      </div>
+
+    </header>
+    <section>
+      <slot />
+    </section>
+    <Advert />
+
+    <footer>
+      <Copy />
+      <Utterances />
+    </footer>
+  </article>
+</BaseLayout>

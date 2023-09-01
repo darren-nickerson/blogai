@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.jsx";
+
+const pageTitle ="Contact Us | Get in Touch with BlogAI.io for AI-Driven Content Solutions";
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  description="Get in Touch with BlogAI.io - Your Partner in AI-Driven Content. Have questions or inquiries? Contact us at BlogAI.io for swift and knowledgeable assistance. Whether you're looking for AI-generated blog posts or exploring our ChatGPT Blog Prompt Generator, our dedicated team is here to help. Reach out today and discover how we're revolutionizing the way you create content. Your journey to exceptional content starts here."
+  title="Contact Page"
+>
+  <ContactForm client:load />
+</BaseLayout>

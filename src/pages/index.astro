@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+import Search from "../components/Search";
+import Advert from "../components/Advert.astro";
+const pageTitle ="Unlocking Creativity with AI-Powered Blog Content | BlogAI.io";
+const postMap = (await Astro.glob("../pages/posts/*.md")).map(post => ({name: post.frontmatter.title, path: post.url, tag: post.frontmatter.tags[0] }));
+
+const allPosts = await Astro.glob("../pages/posts/*.md");
+allPosts.sort(
+  (a, b) =>
+    Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate)
+);
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  description="Welcome to BlogAI.io - Your Hub for AI-Powered Blogging Solutions. Elevate your online presence with our cutting-edge AI-generated blog posts. At BlogAI.io, we offer unbeatable value – 5 premium articles for just £19.99. But that's not all! Access our ChatGPT Blog Prompt Generator for free, igniting your creative spark. Whether you're a blogger, marketer, or entrepreneur, our AI-driven content is tailored to your requirements. Join the ranks of forward-thinkers embracing the future of content creation. Fuel your website effortlessly with BlogAI.io."
+  title="AI-Powered Blog Content | Transforming Ideas into Engaging Posts | BlogAI.io"
+>
+<Advert />
+
+  <Search client:load posts={postMap}/>
+<ul>
+    {
+      allPosts.map((post) => (
+        <BlogPost
+          url={post.url}
+          title={post.frontmatter.title}
+          date={post.frontmatter.pubDate}
+          tag={post.frontmatter.tags[0]}
+        />
+      ))
+    }
+  </ul>
+</BaseLayout>

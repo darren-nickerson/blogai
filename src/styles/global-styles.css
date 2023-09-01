@@ -1,0 +1,35 @@
+.texthighlight::-moz-selection {
+  /* Code for Firefox */
+  color: black;
+  /* Adjust text color for better contrast */
+  background: #45A67C !important;
+}
+
+.texthighlight::selection {
+  color: black;
+  /* Adjust text color for better contrast */
+  background: #45A67C !important;
+}
+
+
+
+/* Style for the summary */
+summary {
+  @apply text-lg font-bold cursor-pointer p-4 bg-gray-950 border border-gray-800 rounded;
+}
+
+
+
+h1 {
+  line-height: 48px !important;
+}
+
+/* Media query for screens wider than 768px */
+@media (min-width: 768px) {
+  h1 {
+    line-height: 60px !important;
+  }
+
+
+
+}

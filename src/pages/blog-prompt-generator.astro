@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CreateBlogPost from "../components/CreateBlogPost.jsx";
+
+const pageTitle = "AI Blog Prompt Generator | Ignite Your Creativity | BlogAI.io";
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  description="Empower Your Creativity with BlogAI.io's AI Post Generator. Unleash a world of possibilities with our AI-powered content creation tool. At BlogAI.io, our advanced technology fuels inspiration, offering tailor-made prompts for your blogs. Elevate your writing game, whether you're a seasoned blogger or just starting out. Explore the future of content generation with BlogAI.io today."
+  title="Ai Post Generator"
+>
+  <CreateBlogPost client:load />
+</BaseLayout>

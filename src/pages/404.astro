@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const pageTitle = "Lost? Find Your Way Back to AI-Powered Content | BlogAI.io 404 Page";
+---
+
+<BaseLayout
+  pageTitle={pageTitle}
+  description="Lost in the Digital Wilderness? You've Landed on BlogAI.io's 404 Page. Oops, it seems you've taken a detour into uncharted territory. But worry not! Navigate back to familiar grounds with BlogAI.io's AI-powered content solutions. Just as AI adapts, so do we. Explore our range of AI-generated blog posts and creative tools to find your way back to captivating content creation. Let us guide you back on track and experience the future of content with BlogAI.io."
+  title="404- Page not Found"
+>
+  <div class="m-auto w-[230px] mt-20">
+    <img src="/assets/404.png" alt="not found image" class="max-w-full" />
+
+    <div class="message prose prose-invert text-center mt-8">
+      <h1 class="text-6xl font-bold mb-4">404</h1>
+      <p class="text-xl mb-4">Oops! It seems you're lost in space.</p>
+      <a href="/" class="text-red-400 text-xl hover:text-red-500"
+        >Go back home</a
+      >
+    </div>
+  </div>
+</BaseLayout>
